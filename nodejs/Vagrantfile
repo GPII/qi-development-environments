@@ -10,11 +10,12 @@ ansible_vars = YAML.load_file('provisioning/vars.yml')
 CPUS = ENV["VM_CPUS"] || 1
 RAM = ENV["VM_RAM"] || 1048
 
-# If 'nodejs_app_tcp_port' is defined in vars.yml then use that port. Otherwise
-# check for 'VM_HOST_TCP_PORT' or 'VM_GUEST_TCP_PORT' environment variables.
-# Failing that use defaults provided in this file.
-HOST_TCP_PORT = ansible_vars["nodejs_app_tcp_port"] || ENV["VM_HOST_TCP_PORT"] || 8080
-GUEST_TCP_PORT = ansible_vars["nodejs_app_tcp_port"] || ENV["VM_GUEST_TCP_PORT"] || 8080
+# Check for the existence of 'VM_HOST_TCP_PORT' or 'VM_GUEST_TCP_PORT'
+# environment variables. Otherwise if 'nodejs_app_tcp_port' is defined
+# in vars.yml then use that port. Failing that use defaults provided
+# in this file.
+HOST_TCP_PORT = ENV["VM_HOST_TCP_PORT"] || ansible_vars["nodejs_app_tcp_port"] || 8080
+GUEST_TCP_PORT = ENV["VM_GUEST_TCP_PORT"] || ansible_vars["nodejs_app_tcp_port"] || 8080
 
 Vagrant.configure(2) do |config|
 
