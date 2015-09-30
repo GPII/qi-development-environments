@@ -1,6 +1,6 @@
 # Quality Infrastructure Development Environments
 
-This repository contains content that can assist with provisioning development environments. The goal is to use deployment tools on virtual machines that will also be employed to set up build and test environments for the Prosperity4all Quality Infrastructure. Using this approach it is possible to:
+This repository contains tools that can automatically provision a standardized development environment. Using these tools also ensures that the Prosperity4All Quality Infrastructure can automatically build and test your software. With this approach it is possible to:
 
 * Spin up VMs containing application stacks using simple commands
 * Sync file system changes from your operating system (also referred to as 'the host') to the VM so native development tools like editors and IDEs can be used
