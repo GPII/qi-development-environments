@@ -18,6 +18,12 @@ The following software needs to be installed on the host OS:
 * Rsync
 * OpenSSH client
 
+**Note:** Windows users will need to install [Cygwin](https://cygwin.com) and then perform the following tasks:
+
+* Install Rsync and OpenSSH using Cygwin
+* [Change the cygdrive prefix from /cygdrive to /](https://cygwin.com/cygwin-ug-net/highlights.html#ov-hi-files) by editing the ``/etc/fstab`` file created by Cygwin
+* Make sure the Windows firewall is not restricting Vagrant or VirtualBox
+
 ## Contents
 
 Each subdirectory contains a [Vagrantfile](http://docs.vagrantup.com/v2/vagrantfile/) and a ``provisioning`` directory. The directory contains the following files:
