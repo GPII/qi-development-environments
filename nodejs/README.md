@@ -20,5 +20,5 @@ After creating an ``index.js`` file (or whatever you would like to call your scr
     nodejs_app_start_script: index.js
     nodejs_app_dev_env: true
 
-Once again you will need to run ``vagrant provision`` which will now pass your script as an argument to [nodemon](https://github.com/remy/nodemon) which will restart the Node.js process when filesystem changes are detected. This should be used in conjunction with ``vagrant rsync-auto`` so that your changes are propagated to the VM.
+Once again you will need to run ``vagrant provision`` which will now pass your script as an argument to [nodemon](https://github.com/remy/nodemon) which will restart the Node.js process when filesystem changes are detected.
 
