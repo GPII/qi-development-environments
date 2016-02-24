@@ -12,8 +12,9 @@ nodejs_app_name: hello-world
 nodejs_app_git_clone: false
 
 # The absolute file system path where either the application directory or the
-# Git working directory will be located.
-nodejs_app_install_dir: /home/vagrant
+# Git working directory will be located. Please make sure this isn't set to 
+# '/home/vagrant', refer to issue GPII-1582.
+nodejs_app_install_dir: /home/vagrant/sync
 
 # A YAML list of commands that will be executed in order within the application's
 # Git working directory.
