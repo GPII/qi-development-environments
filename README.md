@@ -17,7 +17,7 @@ The following software needs to be installed on the host OS:
 * [Vagrant](https://www.vagrantup.com/downloads.html)
 * OpenSSH client
 
-Unfortunately we have to advise against using VirtualBox 5.1 due to many [bugs](https://www.virtualbox.org/query?version=VirtualBox+5.1.0&version=VirtualBox+5.1.2&version=VirtualBox+5.1.4&col=id&col=summary&col=status&col=owner&col=type&col=priority&col=component&order=priority) that were introduced in that release. We are constantly monitoring the situation and will update this document as soon as our tests indicate newer versions of VirtualBox 5.1 are stable enough.
+Unfortunately we have to advise against using VirtualBox 5.1 due to many [bugs](https://www.virtualbox.org/query?version=VirtualBox+5.1.0&version=VirtualBox+5.1.2&version=VirtualBox+5.1.4&col=id&col=summary&col=status&col=owner&col=type&col=priority&col=component&order=priority) that were introduced in that release. We will update this document as soon as our tests indicate newer versions of VirtualBox 5.1 are stable enough.
 
 **Note:** Windows support was tested using a [Cygwin](https://cygwin.com) shell after having performed the following tasks:
 
