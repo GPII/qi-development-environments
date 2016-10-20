@@ -13,9 +13,11 @@ This repository contains tools that can automatically provision a standardized d
 
 The following software needs to be installed on the host OS:
 
-* [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_0)
-* [Vagrant](https://www.vagrantup.com/downloads.html)
+* [VirtualBox 5.x](https://www.virtualbox.org/wiki/Download_Old_Builds_5_0)
+* [Vagrant 1.8.x](https://www.vagrantup.com/downloads.html)
 * OpenSSH client
+
+At the time of writing, VirtualBox 5.0.28 and vagrant 1.8.6 have been tested successfully.
 
 Unfortunately we have to advise against using VirtualBox 5.1 due to many [bugs](https://www.virtualbox.org/query?version=VirtualBox+5.1.0&version=VirtualBox+5.1.2&version=VirtualBox+5.1.4&col=id&col=summary&col=status&col=owner&col=type&col=priority&col=component&order=priority) that were introduced in that release. We will update this document as soon as our tests indicate newer versions of VirtualBox 5.1 are stable enough.
 
