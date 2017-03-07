@@ -1,0 +1,40 @@
+---
+.ci_env:
+  vms:
+    windows10:
+      cpu: 2
+      memory: 2048
+      clone: true      # Use the linked_clone Vagrant feature
+      box: inclusivedesign/windows10-eval
+
+.ci_stages:            # Stages to perform when 'ci test' command is invoked
+  - setup              # The first stage to execute
+  - test               # The second stage to execute
+
+setup:
+  stage: setup         # Name of the stage
+  script:
+    - choco upgrade googlechrome -y
+    # Install Node.js LTS or any other packages provided by Chocolatey and then use 'refreshenv'
+    # below.
+    - choco install nodejs-lts -y
+    # 'refreshenv' is a Chocolatey provided batch file that needs to be run after software is 
+    # installed which might have made changes to the PATH environment variable, such as Node.js in
+    # this case.
+    - refreshenv
+    - npm install yarn -g
+    # Make use of the Visual C++ Build Tools that is provided in the VM.
+    - yarn config set msvs_version 2015 --global
+    # Prevent npm from using symlinks which won't work in VirtualBox shared folders on Windows
+    # hosts.
+    - yarn config set bin-links false
+    - yarn install
+
+test:
+  stage: test
+  script:
+    # Any command that requires access to the Windows desktop envrionment, such as interacting with
+    # application windows, should be provided as an option to the 'do.ps1' script. More information
+    # about the reason to use DoIt can be found here: 
+    # https://github.com/idi-ops/packer-windows#internals-doit
+    - do.ps1 -c 'setx BROWSERS chrome & npm test'

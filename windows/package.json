@@ -1,0 +1,25 @@
+{
+    "name": "a11y-audits-example",
+    "version": "1.0.0",
+    "description": "Automated accessibility audits example.",
+    "scripts": {
+        "test": " node node_modules/mocha/bin/mocha test/index.js -R tap"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GPII/qi-development-environments.git"
+    },    
+    "author": "GPII",
+    "license": "BSD-3-Clause",
+    "bugs": {
+        "url": "https://issues.gpii.net"
+    },
+    "homepage": "http://gpii.net",
+    "devDependencies": {
+        "axe-core": "2.1.7",
+        "axe-webdriverjs": "0.5.0",
+        "chromedriver": "2.27.2",
+        "mocha": "3.2.0",
+        "selenium-webdriver": "3.0.1"
+    }
+}
