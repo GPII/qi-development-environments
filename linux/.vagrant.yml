@@ -1,5 +1,5 @@
 ---
-.ci_env:
+env:
   vms:
     fedora:
       cpu: 2
@@ -7,7 +7,7 @@
       clone: true      # Use the linked_clone Vagrant feature
       box: inclusivedesign/fedora24
 
-.ci_stages:            # Stages to perform when 'ci test' command is invoked
+stages:            # Stages to perform when 'ci test' command is invoked
   - setup              # The first stage to execute
   - test               # The second stage to execute
 
