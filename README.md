@@ -21,9 +21,9 @@ The following software needs to be installed on the host OS:
 * Installed OpenSSH using Cygwin
 * Made sure the Windows firewall was not restricting Vagrant or VirtualBox
 
-## Getting Started
+## Getting Started with Local Continuous Integration
 
- A [.vagrant.yml](https://github.com/amatas/vagrant-gpii-ci#virtual-machines-definition) configuration file defines what type of environment is to be created and the CI jobs to run within it. The file should reside in the top level of project repositories and possibly also a ``provisioning`` directory containing build scripts that could be executed in VMs. Please refer to the ``linux`` and ``windows`` directories in this repository for examples of how to configure VMs to automate web accessibility tests.
+ A [.vagrant.yml](https://github.com/amatas/vagrant-gpii-ci#virtual-machines-definition) configuration file defines what type of environment is to be created and the Continuous Integration (CI) jobs to run within it. The file should reside in the top level of project repositories and possibly also a ``provisioning`` directory containing build scripts that could be executed in VMs. Please refer to the ``linux`` and ``windows`` directories in this repository for examples of how to configure VMs to automate web accessibility tests.
 
 With the appropriate configuration in place the following commands will create an environment, provision it, and carry out any CI jobs within it:
 
@@ -42,11 +42,11 @@ While the [Vagrant web site](https://docs.vagrantup.com/v2/cli/index.html) provi
 * ``vagrant status`` - verify whether the VM has been provisioned once, if it's running, or stopped
 * ``vagrant halt`` - stop the VM
 * ``vagrant destroy`` - delete the VM altogether and reclaim storage space
-* ``vagrant box update`` - Vagrant boxes are disk images that serve as templates for VMs, this command downloads a newer version of a previously downloaded box 
+* ``vagrant box update`` - Vagrant boxes are disk images that serve as templates for VMs, this command downloads a newer version of a previously downloaded box
 
 ## Automated Accessibility Tests
 
-The VMs created using these tools can aide the development of a diverse type of projects. This section will cover aspects of using VMs to automate web accessibility tests. 
+The VMs created using these tools can aide the development of a diverse type of projects. This section will cover aspects of using VMs to automate web accessibility tests.
 
 ### Tools Used for Automating Tests
 
@@ -71,3 +71,24 @@ To learn more about automated accessibility tests and using the WebDriver API to
 * [Selenium Webdriver documentation](http://seleniumhq.github.io/selenium/docs/api/javascript/)
 * [JavaScript with Selenium WebDriver and Mocha](http://testerstories.com/2016/02/javascript-with-selenium-webdriver-and-mocha/)
 * [Accessibility Testing with axe-core and WebdriverJS](https://www.youtube.com/watch?v=1QAvRJM-zR8)
+
+## Hosted Continuous Integration
+
+CI jobs like the ones described above can also be executed by services such as [GitLab CI](https://about.gitlab.com/gitlab-ci/). This allows for:
+* Test runs to be triggered when changes are pushed to Git repositories, letting developers know when project stability has been affected
+* Interacting with CI results using an [intuitive dashboard](https://docs.gitlab.com/ee/ci/img/environments_manual_action_builds.png)
+* The use of [pipelines](https://docs.gitlab.com/ee/ci/img/environments_manual_action_pipelines.png) that can prevent downstream or dependent jobs from running if failures occur in upstream jobs
+* Optionally performing [deployments](https://about.gitlab.com/2016/08/26/ci-deployment-and-environments/) or issuing releases if pipelines result in passing jobs
+* Displaying the results of most recent CI runs using [badges](https://docs.gitlab.com/ee/user/project/pipelines/settings.html#badges) in repository documentation or on project pages
+
+### Getting Started with Hosted Continuous Integration
+
+GitLab provides provides two options for using their software, a [hosted version](https://about.gitlab.com/) and a [self-hosted option](https://about.gitlab.com/products/). Both feature CI integration but the assumption is that the hosted version is being used.
+
+All jobs are run on hosts referred to as CI runners which then send results to GitLab. While runners can be installed on [numerous operating systems](https://docs.gitlab.com/runner/#install-gitlab-runner) the QI automation has been tested on [Linux](https://docs.gitlab.com/runner/install/linux-repository.html) hosts.
+
+For this to work your project's repository either needs to be hosted by GitLab [repository (pull) mirroring](https://docs.gitlab.com/ee/workflow/repository_mirroring.html)
+
+* Linux host where the GitLab CI runner will be [installed](https://docs.gitlab.com/runner/install/linux-repository.html) using the [shell executor](https://docs.gitlab.com/runner/#selecting-the-executor)
+* All of the requirements mentioned in this document above will need to be met on the Linux host
+
