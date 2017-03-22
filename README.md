@@ -75,20 +75,31 @@ To learn more about automated accessibility tests and using the WebDriver API to
 ## Hosted Continuous Integration
 
 CI jobs like the ones described above can also be executed by services such as [GitLab CI](https://about.gitlab.com/gitlab-ci/). This allows for:
-* Test runs to be triggered when changes are pushed to Git repositories, letting developers know when project stability has been affected
+* Triggering of test runs when changes are pushed to Git repositories, letting developers know when project stability has been affected
 * Interacting with CI results using an [intuitive dashboard](https://docs.gitlab.com/ee/ci/img/environments_manual_action_builds.png)
 * The use of [pipelines](https://docs.gitlab.com/ee/ci/img/environments_manual_action_pipelines.png) that can prevent downstream or dependent jobs from running if failures occur in upstream jobs
 * Optionally performing [deployments](https://about.gitlab.com/2016/08/26/ci-deployment-and-environments/) or issuing releases if pipelines result in passing jobs
 * Displaying the results of most recent CI runs using [badges](https://docs.gitlab.com/ee/user/project/pipelines/settings.html#badges) in repository documentation or on project pages
 
-### Getting Started with Hosted Continuous Integration
-
 GitLab provides provides two options for using their software, a [hosted version](https://about.gitlab.com/) and a [self-hosted option](https://about.gitlab.com/products/). Both feature CI integration but the assumption is that the hosted version is being used.
 
-All jobs are run on hosts referred to as CI runners which then send results to GitLab. While runners can be installed on [numerous operating systems](https://docs.gitlab.com/runner/#install-gitlab-runner) the QI automation has been tested on [Linux](https://docs.gitlab.com/runner/install/linux-repository.html) hosts.
+It is also assumed that your project's repository is either hosted by GitLab or that the [repository (pull) mirroring](https://docs.gitlab.com/ee/workflow/repository_mirroring.html) feature is being used.
 
-For this to work your project's repository either needs to be hosted by GitLab [repository (pull) mirroring](https://docs.gitlab.com/ee/workflow/repository_mirroring.html)
+### Getting Started with Hosted Continuous Integration
 
-* Linux host where the GitLab CI runner will be [installed](https://docs.gitlab.com/runner/install/linux-repository.html) using the [shell executor](https://docs.gitlab.com/runner/#selecting-the-executor)
-* All of the requirements mentioned in this document above will need to be met on the Linux host
+This section will describe two ways of getting started with hosted CI. If a CI runner is already set up then referring to just the [Quickstart](#quickstart) section should be enough. If you require more details then please also read the [CI Runner Setup](#ci-runner-setup) section.
 
+#### Quickstart
+
+Please copy [this .gitlab-ci.yml](./windows/.gitlab-ci.yml) file to the top level directory of your repository where your ``.vagrant.yml`` file is located. Upon pushing your changes CI jobs will be triggered on the runner (see below) and results will be displayed in the pipelines section of your project's repository page.
+
+#### CI Runner Setup
+
+All jobs run on hosts referred to as CI runners which then send results to GitLab. A few things to note:
+
+* While runners can be installed on [numerous operating systems](https://docs.gitlab.com/runner/#install-gitlab-runner) the QI automation has been tested on [Linux](https://docs.gitlab.com/runner/install/linux-repository.html) hosts
+* The CI runner should be set up to use the [shell executor](https://docs.gitlab.com/runner/#selecting-the-executor)
+* The runner should meet all of the [QI requirements](#requirements)
+* The shared runners provided by gitlab.com should be disabled, leaving only your private runner enabled
+
+Please refer to the [Configuring a Runner](https://docs.gitlab.com/ee/ci/quick_start/#configuring-a-runner) documentation for more information.
