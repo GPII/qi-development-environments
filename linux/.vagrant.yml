@@ -14,6 +14,10 @@ stages:            # Stages to perform when 'ci test' command is invoked
 setup:
   stage: setup         # Name of the stage
   script:
+    # Windows host VirtualBox shared folders symlink workaround.
+    - sudo mkdir -p /var/tmp/vagrant/node_modules /vagrant/node_modules
+    - sudo chown vagrant:vagrant -R /var/tmp/vagrant/node_modules /vagrant/node_modules
+    - sudo mount -o bind /var/tmp/vagrant/node_modules /vagrant/node_modules
     # Install Node.js LTS.
     - sudo rpm -i --nosignature --force 'https://rpm.nodesource.com/pub_6.x/fc/24/x86_64/nodesource-release-fc24-1.noarch.rpm'
     - sudo dnf install -y nodejs gcc-c++ make
