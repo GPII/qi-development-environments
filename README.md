@@ -11,7 +11,7 @@ This repository contains tools that can automatically provision a standardized d
 
 The following software needs to be installed on the host OS:
 
-* [VirtualBox 5.0.x](https://www.virtualbox.org/wiki/Download_Old_Builds_5_0) (Avoid 5.1.x releases as [they are currently not reliable](https://www.virtualbox.org/query?version=VirtualBox+5.1.0&version=VirtualBox+5.1.2&version=VirtualBox+5.1.4&col=id&col=summary&col=status&col=owner&col=type&col=priority&col=component&order=priority))
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 * [Vagrant](https://www.vagrantup.com/downloads.html) 1.9.2 or newer
 * [Vagrant GPII CI plugin](https://github.com/amatas/vagrant-gpii-ci)
 * OpenSSH client
