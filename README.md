@@ -7,19 +7,17 @@ This repository contains tools that can automatically provision a standardized d
 * Forward ports programmatically from the host to the VM
 * Define entire development environments alongside application source code
 * Treat VMs as disposable development or test environments since they can be reprovisioned with minimal effort
-* Utilize [CentOS](https://github.com/idi-ops/packer-centos) and [Fedora](https://github.com/idi-ops/packer-fedora) VMs that are kept upto date with security patches by the Inclusive Design Institute
+* Utilize [CentOS](https://app.vagrantup.com/inclusivedesign/boxes/centos7), [Fedora](https://app.vagrantup.com/inclusivedesign/boxes/fedora26) and [Windows 10](https://app.vagrantup.com/inclusivedesign/boxes/windows10-eval-x64) VMs that are kept up to date with security patches by the Inclusive Design Institute
 
 ## Requirements
 
 The following software needs to be installed on the host OS:
 
-* [VirtualBox 5.x](https://www.virtualbox.org/wiki/Download_Old_Builds_5_0)
-* [Vagrant 1.8.x](https://www.vagrantup.com/downloads.html)
+* [VirtualBox 5.1.x](https://www.virtualbox.org/wiki/Downloads)
+* [Vagrant 1.9.x](https://www.vagrantup.com/downloads.html)
 * OpenSSH client
 
-At the time of writing, VirtualBox 5.0.28 and vagrant 1.8.6 have been tested successfully. Vagrant 1.8.5 should not be used on account of [issue #7610](https://github.com/mitchellh/vagrant/issues/7610).
-
-Unfortunately we have to advise against using VirtualBox 5.1 due to many [bugs](https://www.virtualbox.org/query?version=VirtualBox+5.1.0&version=VirtualBox+5.1.2&version=VirtualBox+5.1.4&col=id&col=summary&col=status&col=owner&col=type&col=priority&col=component&order=priority) that were introduced in that release. We will update this document as soon as our tests indicate newer versions of VirtualBox 5.1 are stable enough.
+At the time of writing, VirtualBox 5.1.22 and vagrant 1.9.7 have been tested successfully.
 
 **Note:** Windows support was tested using a [Cygwin](https://cygwin.com) shell after having performed the following tasks:
 
@@ -75,4 +73,3 @@ The provided Vagrantfile(s) will forward TCP ports from the host to the VM. Port
 If two VMs requiring the same ports are launched and no ``VM_HOST_TCP_PORT`` environment variables are used to prevent a conflict, then the second VM will attempt to correct this. A message such as the following will be logged to your terminal:
 
     Fixed port collision for 8080 => 8080. Now on port 2200.
-
