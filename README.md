@@ -7,7 +7,7 @@ This repository contains tools that can automatically provision a standardized d
 * Forward ports programmatically from the host to the VM
 * Define entire development environments alongside application source code
 * Treat VMs as disposable development or test environments since they can be reprovisioned with minimal effort
-* Utilize [CentOS](https://app.vagrantup.com/inclusivedesign/boxes/centos7) and [Fedora](https://app.vagrantup.com/inclusivedesign/boxes/fedora26) VMs that are kept upto date with security patches by the Inclusive Design Institute
+* Utilize [CentOS](https://app.vagrantup.com/inclusivedesign/boxes/centos7), [Fedora](https://app.vagrantup.com/inclusivedesign/boxes/fedora26) and [Windows 10](https://app.vagrantup.com/inclusivedesign/boxes/windows10-eval-x64) VMs that are kept up to date with security patches by the Inclusive Design Institute
 
 ## Requirements
 
